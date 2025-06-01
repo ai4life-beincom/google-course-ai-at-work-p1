@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa Học Từ Google: Nâng Tầm Công Việc Cùng AI (Tập 1)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+            color: #1f2937; /* gray-800 */
+            scroll-behavior: smooth;
+            padding-top: 60px; /* Add padding to body to prevent content from being hidden by fixed nav */
+        }
+        .blue-nav {
+            background-image: linear-gradient(to right, #1e40af, #1e3a8a); /* blue-700 to blue-800 gradient */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Softer shadow */
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 60px; /* Fixed height for the nav bar */
+            display: flex;
+            align-items: center;
+        }
+        .blue-nav h1 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            color: #ffffff; /* white */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .content-section {
+            background-color: #ffffff; /* white */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg custom */
+            padding: 2rem; /* p-8 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+        }
+        .content-section h2 {
+            font-size: 2rem; /* text-3xl */
+            font-weight: 800; /* font-extrabold */
+            color: #1e3a8a; /* blue-800 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+         .content-section h3 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700; /* font-bold */
+            color: #1e40af; /* blue-700 */
+            margin-top: 2rem; /* mt-8 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .content-section p, .content-section li {
+            color: #374151; /* gray-700 */
+            line-height: 1.8; /* leading-relaxed */
+            margin-bottom: 1rem; /* mb-4 */
+            font-size: 1.05rem; /* Slightly larger text for readability */
+        }
+        .content-section ul {
+            list-style-type: disc;
+            margin-left: 1.75rem; /* ml-7 */
+        }
+        .content-section strong {
+            font-weight: 700; /* font-bold */
+            color: #1e3a8a; /* blue-800 */
+        }
+        .cta-link {
+            display: inline-block;
+            background-color: #2563eb; /* blue-600 */
+            color: #ffffff;
+            padding: 0.875rem 1.75rem; /* py-3.5 px-7 */
+            border-radius: 0.5rem; /* rounded-lg */
+            text-decoration: none;
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-link:hover {
+            background-color: #1d4ed8; /* blue-700 */
+            transform: translateY(-2px);
+        }
+        .code-block {
+            background-color: #1a202c; /* gray-900 */
+            color: #f7fafc; /* gray-100 - Very light for main text */
+            padding: 1.25rem; /* p-5 */
+            border-radius: 0.5rem; /* rounded-lg */
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 1rem; /* mb-4 */
+            font-size: 0.95rem;
+        }
+        .code-block em { /* Style for italic text within code block */
+            color: #e2e8f0; /* gray-200 - Also very light, slightly dimmer than main text */
+            font-style: italic;
+        }
+        .activity-card {
+            background-color: #eff6ff; /* blue-50 */
+            border-left: 5px solid #2563eb; /* blue-600 */
+            padding: 1.25rem; /* p-5 */
+            margin: 1.75rem 0; /* my-7 */
+            border-radius: 0.375rem; /* rounded-md */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+         .activity-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); /* shadow related to border color */
+        }
+        .activity-card p {
+            margin-bottom: 0.5rem; /* mb-2 */
+            font-weight: 600; /* font-semibold */
+            color: #1e3a8a; /* blue-800 */
+        }
+        .icon-style { /* For emojis used as icons */
+            display: inline-block;
+            margin-right: 0.625rem; /* mr-2.5 */
+            font-size: 1.375rem; /* text-xl (approx) */
+            vertical-align: middle;
+        }
+        .info-card { /* For cards in "Những Gì Bạn Sẽ Học Được" */
+            padding: 1.25rem; /* p-5 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04); /* shadow-md */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+        }
+        .info-card h3 {
+            font-size: 1.25rem; /* text-xl */
+            margin-top: 0;
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .info-card p {
+            font-size: 0.95rem; /* text-sm */
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        .analogy-box {
+            padding: 1.25rem; /* p-5 */
+            margin: 1.5rem 0; /* my-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            border-left-width: 5px;
+        }
+        .analogy-box p { margin-bottom: 0; }
+
+        /* Responsive adjustments for nav bar title */
+        @media (max-width: 768px) {
+            .blue-nav h1 {
+                font-size: 1rem; /* text-lg for smaller screens */
+            }
+             .blue-nav {
+                padding: 0.5rem 0.75rem; /* py-2 px-3 */
+                 height: 50px;
+            }
+            body {
+                padding-top: 50px;
+            }
+        }
+         @media (max-width: 480px) {
+            .blue-nav h1 {
+                font-size: 0.875rem; /* text-sm for very small screens */
+            }
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="blue-nav">
+        <div class="container mx-auto flex items-center justify-start">
+            <h1>Khóa Học Google: Nâng Tầm Công Việc Cùng AI (Tập 1)</h1>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <section class="content-section">
+            <div class="text-center mb-10">
+                <img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihY1X8h_XmZps1jZc_gR0_s7qO8T_Qn0f2aWp8z4J3_VwJ5k8qX-c_yB-L8_w3xH1t_Xn1rB_yZ5sC_j_Wk_A=s1600-rw-v1" alt="Wendy from Google" class="mx-auto rounded-full h-36 w-36 object-cover mb-5 shadow-lg border-4 border-white" onerror="this.src='https://placehold.co/144x144/EBF4FF/1E3A8A?text=Wendy'; this.onerror=null;">
+                <p class="text-xl italic text-gray-600 mb-6">"Với hơn một thập kỷ làm việc với các doanh nghiệp nhỏ tại Google, Wendy tin rằng chúng ta đang ở một thời điểm thú vị khi AI bắt đầu tích hợp vào công việc hàng ngày. Cùng khám phá nội dung của khóa học ngay bây giờ nhé."</p>
+                <a href="https://www.youtube.com/watch?v=uIklPjEHtNc" target="_blank" class="cta-link">
+                    <span class="icon-style">▶️</span> Xem Video Bài Giảng
+                </a>
+            </div>
+            <p>Bạn có yêu thích công việc của mình không? Có lẽ đó là những khoảnh khắc sáng tạo, kết nối với khách hàng, hoặc cùng nhóm hoàn thành một dự án quan trọng. Tuy nhiên, chắc hẳn cũng có những khía cạnh ít thú vị hơn, như quản lý hộp thư đến tràn ngập hay danh sách việc cần làm (to-do list) không ngừng dài ra. Những tác vụ tốn thời gian này thường có thể cản trở bạn tập trung vào những điều thực sự mình yêu thích.</p>
+            <p>May mắn thay, Trí tuệ Nhân tạo (AI) có thể giúp bạn xử lý những công việc tiêu tốn thời gian đó. Nhưng làm thế nào để bạn ứng dụng AI vào công việc hoặc doanh nghiệp của mình một cách hiệu quả? Đó chính xác là điều mà chuyên gia Wendy, Giám đốc Marketing, Bộ phận Doanh nghiệp Nhỏ tại Google, sẽ hướng dẫn bạn trong khóa học này. Mục tiêu của cô là đảm bảo mọi người, từ các doanh nghiệp nhỏ đến người lao động trong mọi ngành nghề, đều có thể hưởng lợi từ tiềm năng to lớn này.</p>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">💡</span>Khám Phá Tiềm Năng Của AI Trong Công Việc</h2>
+            <p>Để bắt đầu, hãy tự hỏi bản thân những câu hỏi sau:</p>
+            <ul class="list-disc list-inside bg-blue-50 p-5 rounded-lg shadow-sm my-5">
+                <li>Tác vụ nào bạn mong muốn ủy thác trong tuần này?</li>
+                <li>Có tác vụ nào bạn đã trì hoãn vì không biết bắt đầu từ đâu không?</li>
+                <li>Tác vụ lặp đi lặp lại hoặc tẻ nhạt nào khiến công việc hàng ngày của bạn kém thú vị hơn?</li>
+            </ul>
+            <div class="activity-card">
+                <p><span class="icon-style">🤔</span>Hoạt động: Nhìn nhận lại những thách thức hiện tại</p>
+                <a href="https://bit.ly/43Fd43H" target="_blank" class="cta-link text-sm">Thực hiện ngay</a>
+            </div>
+            <p>Hãy dành chút thời gian để suy nghĩ về những câu trả lời. Xuyên suốt khóa học này, bạn sẽ khám phá cách AI có thể giúp giải quyết những thách thức đó, và bạn sẽ có một kế hoạch cụ thể để bắt đầu.</p>
+            <p>Chúng ta sẽ tập trung vào <strong>Google Gemini</strong> và <strong>NotebookLM</strong>, nhưng những kiến thức bạn học được có thể áp dụng cho nhiều trải nghiệm AI khác.</p>
+            <p>Điều quan trọng cần lưu ý là khóa học này không phải để thêm việc vào danh sách việc cần làm của bạn. Ngược lại, nó sẽ giúp bạn sử dụng AI để hỗ trợ những gì bạn đã và đang làm. Chúng ta sẽ đi sâu vào các ví dụ thực tế mà bạn có thể áp dụng ngay lập tức, và Wendy sẽ hướng dẫn bạn cách đạt được kết quả tốt nhất khi sử dụng AI. Bạn sẽ được khuyến khích sử dụng AI thay vì chỉ tìm hiểu về nó, bởi vì việc chỉ nắm lý thuyết về AI cũng giống như đọc sách dạy chơi piano mà không bao giờ chạm vào phím đàn vậy.</p>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🎓</span>Những Gì Bạn Sẽ Học Được</h2>
+            <p>Trong khóa học này, bạn sẽ được trang bị những kiến thức và kỹ năng cần thiết để ứng dụng AI hiệu quả:</p>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="info-card bg-sky-50">
+                    <h3 class="text-sky-700"><span class="icon-style">🧠</span>Hiểu Cách AI Hoạt Động</h3>
+                    <p>Tìm hiểu về AI bằng thuật ngữ đời thường, không còn những biệt ngữ công nghệ phức tạp!</p>
+                </div>
+                <div class="info-card bg-green-50">
+                    <h3 class="text-green-700"><span class="icon-style">✍️</span>Viết Lời Nhắc (Prompts) Hiệu Quả</h3>
+                    <p>Khám phá cách đưa ra hướng dẫn tốt nhất cho AI để nhận được kết quả hữu ích nhất.</p>
+                </div>
+                <div class="info-card bg-amber-50">
+                    <h3 class="text-amber-700"><span class="icon-style">🚀</span>Nâng Cao Sáng Tạo Với Gemini</h3>
+                    <p>Sử dụng Gemini và Gemini Live để giải phóng tiềm năng sáng tạo của bạn.</p>
+                </div>
+                <div class="info-card bg-purple-50">
+                    <h3 class="text-purple-700"><span class="icon-style">🛠️</span>Trợ Lý AI Trong Google Workspace</h3>
+                    <p>Nhận hỗ trợ từ AI ngay trong các ứng dụng quen thuộc như Gmail, Docs, Slides, hoặc Sheets.</p>
+                </div>
+                <div class="info-card bg-pink-50 md:col-span-2">
+                    <h3 class="text-pink-700"><span class="icon-style">📊</span>Hiểu Rõ Thông Tin Với NotebookLM</h3>
+                    <p>Công cụ này giúp bạn tổ chức và phân tích dữ liệu một cách hiệu quả.</p>
+                </div>
+            </div>
+            <p class="mt-8">Bạn sẽ được thực hành và trải nghiệm trực tiếp trong suốt khóa học thông qua các hoạt động và link được cung cấp.</p>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🌐</span>AI Trong Cuộc Sống Hàng Ngày</h2>
+            <p>Có thể bạn đã sử dụng AI trong nhiều năm mà không hề hay biết. Chẳng hạn:</p>
+            <ul class="list-none space-y-4 my-5">
+                <li class="flex items-start p-3 bg-gray-50 rounded-lg shadow-sm"><span class="icon-style text-blue-500 mt-1">🚗</span><span>Khi bạn lái xe đi làm, các cập nhật giao thông theo thời gian thực giúp bạn tránh các tuyến đường tắc nghẽn đều được cung cấp bởi AI.</span></li>
+                <li class="flex items-start p-3 bg-gray-50 rounded-lg shadow-sm"><span class="icon-style text-green-500 mt-1">📧</span><span>Nếu bạn đang gặp khó khăn khi viết email, các gợi ý câu từ hoàn hảo cũng là kết quả của AI.</span></li>
+                <li class="flex items-start p-3 bg-gray-50 rounded-lg shadow-sm"><span class="icon-style text-red-500 mt-1">🎬</span><span>Ngay cả những đề xuất video bạn nhận được trên YouTube cũng được AI hỗ trợ.</span></li>
+            </ul>
+            <p>Đây chỉ là một vài ví dụ nhỏ trong vô vàn ứng dụng của AI. Bạn có thể tự hỏi: Làm thế nào AI có thể dự đoán chúng ta muốn xem, viết, hay làm gì? Để hiểu điều này, chúng ta cần nắm rõ cách AI hoạt động, bởi vì điều đó sẽ giúp bạn biết khi nào nên sử dụng nó.</p>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🧑‍🍳</span>Mô Hình AI: Người Đầu Bếp Thông Thái</h2>
+            <p>Một mô hình AI đơn giản là một chương trình máy tính tiếp nhận một lượng lớn dữ liệu, học hỏi từ đó, và sử dụng những kiến thức đã học để đưa ra dự đoán, khuyến nghị hoặc quyết định.</p>
+            <div class="analogy-box bg-amber-50 border-amber-400">
+                <p><span class="icon-style">💡</span><strong>Tưởng tượng một đầu bếp tạo ra một công thức mới:</strong> Lần thử đầu tiên của họ là một "điểm dữ liệu". Từ dữ liệu đó, họ học được những điều như "công thức cần thêm muối". Những lần thử tiếp theo bổ sung thêm nhiều "điểm dữ liệu" và bài học mới, ví dụ như "nó quá cay", "cần thêm rau củ", v.v. Cuối cùng, tất cả những bài học này giúp đầu bếp quyết định công thức hoàn hảo.</p>
+            </div>
+            <p>Cũng như người đầu bếp, một khi mô hình AI đã học được từ một lượng dữ liệu khổng lồ, nó có thể bắt đầu thực hiện những điều khá ấn tượng. Nó có thể tiếp nhận một yêu cầu và đưa ra phản hồi, ngay cả khi nó chưa từng gặp một yêu cầu như vậy trước đây.</p>
+            <p>Loại mô hình AI này được gọi là <strong>Mô hình Ngôn ngữ Lớn (LLM)</strong>. LLM có thể học hỏi rất nhiều và rất giỏi trong việc dự đoán, đến mức chúng có thể tạo ra toàn bộ nội dung mới, chẳng hạn như bài đăng blog, ngân sách hoặc kế hoạch dự án. Đây được gọi là <strong>AI Tạo Sinh (GenAI)</strong>.</p>
+            <p>Một số trợ lý GenAI, như ứng dụng Gemini, không chỉ hoạt động với văn bản. GenAI có thể hiểu và tạo ra hình ảnh, video, âm thanh và nhiều hơn nữa. Vì vậy, bạn có thể tải lên một bức ảnh biểu đồ và yêu cầu tóm tắt bằng văn bản. Bạn có thể nhận danh sách các việc cần làm từ bản ghi âm cuộc họp, hoặc tạo ra hình ảnh ấn tượng cho trang web hoặc bản trình bày của khách hàng.</p>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">💬</span>Giao Tiếp Với AI: Sức Mạnh Của Lời Nhắc</h2>
+            <p>Vậy làm thế nào để chúng ta thực sự sử dụng Gemini? Điều đó phụ thuộc vào cách chúng ta giao tiếp với nó thông qua các <strong>lời nhắc (prompts)</strong>.</p>
+            <div class="analogy-box bg-teal-50 border-teal-400">
+                <p><span class="icon-style">🗺️</span><strong>Ví dụ như khi hỏi đường đến một nhà hàng:</strong> Nếu người đó nói: "Rẽ trái, lại rẽ trái, rồi rẽ phải." Bạn có lẽ sẽ không cảm thấy tự tin lắm rằng mình sẽ đến đúng nơi cần đến, phải không? Nhưng nếu người đó đưa ra hướng dẫn chính xác hơn, như: "Rẽ trái vào đường Main Street tại góc có trạm xăng, và tiếp tục đi hai dãy nhà cho đến khi bạn đến nhà hàng," thì bạn sẽ dễ tìm thấy đường hơn.</p>
+            </div>
+            <p>Để nhận được kết quả hữu ích từ AI, cũng tương tự như vậy. Bạn cần đưa ra hướng dẫn rõ ràng và cụ thể để AI đi đúng hướng. Việc giao tiếp với AI được gọi là <strong>tạo lời nhắc (prompting)</strong>. Nó khác với cách chúng ta thường tương tác với công nghệ. Bạn không chỉ đưa ra các lệnh; bạn đang tham gia vào một cuộc trò chuyện, một cuộc trò chuyện mà bạn có thể xây dựng và tinh chỉnh để nhận được chính xác những gì mình cần. Và phần tốt nhất là những cuộc trò chuyện này diễn ra bằng ngôn ngữ tự nhiên, nghĩa là bạn không cần kỹ năng đặc biệt nào để bắt đầu. Bạn đã sẵn sàng ngay bây giờ!</p>
+        </section>
+        
+        <section class="content-section">
+            <h2><span class="icon-style">🚀</span>5 Bước Tạo Prompts Hiệu Quả</h2>
+            <p>Một trong những lỗi lớn nhất mà mọi người có thể mắc phải là không cung cấp đủ chi tiết trong lời nhắc của họ. Bạn cần phải rõ ràng và cụ thể khi tạo lời nhắc cho Gemini hoặc bất kỳ trải nghiệm GenAI nào để có được kết quả tốt nhất. Nhìn chung, bạn càng rõ ràng và cụ thể với lời nhắc ban đầu, bạn sẽ nhận được kết quả tốt hơn.</p>
+            <p>Hãy cùng tìm hiểu 5 bước để viết lời nhắc hiệu quả:</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
+                <div class="info-card bg-blue-100 p-4 rounded-lg"><strong>Bước 1: Mô tả nhiệm vụ (Task)</strong><p class="text-sm text-blue-700 mt-1">Nghĩ về một tác vụ bạn muốn AI giúp đỡ. Ví dụ: "Giúp tôi viết một email giới thiệu..."</p></div>
+                <div class="info-card bg-green-100 p-4 rounded-lg"><strong>Bước 2: Thêm vai trò/nhân cách (Persona)</strong><p class="text-sm text-green-700 mt-1">Cho AI biết kiến thức chuyên môn nào cần vận dụng. Ví dụ: "Đóng vai trò là một chuyên gia tiếp thị..."</p></div>
+                <div class="info-card bg-yellow-100 p-4 rounded-lg"><strong>Bước 3: Chỉ định định dạng (Format)</strong><p class="text-sm text-yellow-700 mt-1">Đầu ra nên trông như thế nào (độ dài, giọng điệu, ngôn ngữ...). Ví dụ: "Đầu ra tối đa 500 từ, giọng thân thiện..."</p></div>
+                <div class="info-card bg-purple-100 p-4 rounded-lg"><strong>Bước 4: Thiết lập ngữ cảnh (Context)</strong><p class="text-sm text-purple-700 mt-1">Thông tin nền AI cần biết (mục tiêu, lý do, những gì đã thử). Ví dụ: "Tôi tìm nguồn hoa tại địa phương..."</p></div>
+                <div class="info-card bg-pink-100 p-4 rounded-lg lg:col-span-2"><strong>Bước 5: Thêm tài liệu tham khảo (References)</strong><p class="text-sm text-pink-700 mt-1">Cho AI biết nên hướng tới điều gì và tại sao (ví dụ: văn bản mẫu). Ví dụ: "Sử dụng email này làm mẫu..."</p></div>
+            </div>
+            
+            <div class="activity-card">
+                <p><span class="icon-style">✍️</span>Hoạt động: Viết một prompt hiệu quả cho Gemini</p>
+                <a href="https://bit.ly/4kq7x8j" target="_blank" class="cta-link text-sm">Xem hướng dẫn & thực hành</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🔍</span>Đánh Giá Kết Quả Và Tối Ưu Hóa (Iteration)</h2>
+            <p>Sau khi bạn đã xây dựng lời nhắc của mình, hãy đánh giá kết quả đầu ra. Ví dụ, Gemini đã tạo ra một email giới thiệu thân thiện cho Wendy, có gạch đầu dòng và tiêu đề hấp dẫn, đồng thời làm nổi bật các điểm mạnh như hoa nguồn gốc địa phương và giá tùy chỉnh.</p>
+            <p>Tuy nhiên, Wendy cảm thấy email này hơi dài dòng. Vậy nên cô sẽ tiếp tục <strong>tối ưu hóa (iterate)</strong> bằng cách yêu cầu Gemini rút gọn nội dung:</p>
+            <div class="code-block my-5">
+                <p>"Thank you for your help! This is a great start, but it feels too long for an introductory email. Please shorten to 250 words or less."</p>
+                <p class="mt-2"><em>(Cảm ơn bạn đã giúp đỡ! Đây là một khởi đầu tuyệt vời, nhưng email này quá dài cho một email giới thiệu. Vui lòng rút ngắn xuống 250 từ hoặc ít hơn.)</em></p>
+            </div>
+            <p>Trong nhiều trường hợp, để tận dụng tối đa AI thường liên quan đến việc tinh chỉnh hoặc xây dựng dựa trên lời nhắc ban đầu của bạn. Quá trình này được gọi là <strong>lặp lại (iteration)</strong>. Với lặp lại, bạn đang cải thiện đầu ra, trong khi với chuỗi lời nhắc (prompt chaining), bạn đang lấy đầu ra và xây dựng dựa trên nó cho một yêu cầu mới, có liên quan.</p>
+            <div class="activity-card">
+                <p><span class="icon-style">✨</span>Hoạt động: Nâng cấp prompt bằng cách lặp lại cải tiến</p>
+                <a href="https://bit.ly/4kzn3yZ" target="_blank" class="cta-link text-sm">Thực hành ngay</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🔗</span>Chuỗi Lời Nhắc (Prompt Chaining)</h2>
+            <p>Hãy tưởng tượng bạn là chủ một công ty sơn và muốn mở rộng dịch vụ. Thay vì yêu cầu một kế hoạch marketing toàn diện ngay lập tức, bạn có thể <strong>chuỗi lời nhắc</strong> như sau:</p>
+            <div class="space-y-5 my-6">
+                <div class="p-5 bg-indigo-50 rounded-lg shadow-md border-l-4 border-indigo-500">
+                    <p class="font-semibold text-indigo-700 text-lg">Lời nhắc 1:</p>
+                    <p>"Tôi muốn mở rộng các dịch vụ của công ty sơn của mình. Hãy đóng vai trò là cố vấn kinh doanh của tôi và liệt kê 3 dịch vụ bổ sung mà chúng tôi có thể cung cấp."</p>
+                </div>
+                <div class="text-center text-3xl text-indigo-400 font-bold">⬇️</div>
+                <div class="p-5 bg-indigo-100 rounded-lg shadow-md border-l-4 border-indigo-500">
+                    <p class="font-semibold text-indigo-700 text-lg">Lời nhắc 2 (dựa trên kết quả):</p>
+                    <p>"Chúng ta có thể thực hiện dịch vụ nào trong số này trong vòng 6 tháng tới?" <span class="text-sm text-indigo-600">(AI có thể đề xuất "Rửa áp lực/Vệ sinh bề mặt" là khả thi nhất.)</span></p>
+                </div>
+                <div class="text-center text-3xl text-indigo-400 font-bold">⬇️</div>
+                <div class="p-5 bg-indigo-50 rounded-lg shadow-md border-l-4 border-indigo-500">
+                    <p class="font-semibold text-indigo-700 text-lg">Lời nhắc 3 (dựa trên kết quả):</p>
+                    <p>"Nếu chúng ta muốn tiến hành, tôi nên hoàn thành những tác vụ nào trong tuần này?" <span class="text-sm text-indigo-600">(AI sẽ cung cấp một kế hoạch chi tiết cho tuần, tập trung vào việc triển khai dịch vụ "Rửa áp lực".)</span></p>
+                </div>
+            </div>
+            <p class="mt-5">Với chỉ ba lời nhắc, bạn đã đi từ một ý tưởng khá mơ hồ về việc muốn mở rộng kinh doanh đến một kế hoạch cụ thể để thực hiện. Đó chính là sức mạnh của chuỗi lời nhắc! Bạn có thể bắt đầu với thứ gì đó trừu tượng và yêu cầu Gemini giúp bạn biến nó thành thứ gì đó hữu hình.</p>
+            <div class="activity-card">
+                <p><span class="icon-style">🤝</span>Hoạt động: Sử dụng Gemini như một cộng sự tư duy</p>
+                <a href="https://bit.ly/43PVVFG" target="_blank" class="cta-link text-sm">Khám phá thêm</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🖼️</span>Tạo Lời Nhắc Đa Phương Thức</h2>
+            <p>Một kỹ thuật khác là tạo <strong>lời nhắc đa phương thức</strong>, nghĩa là bạn có thể bao gồm các loại phương tiện khác nhau trong lời nhắc của mình. Đúng vậy, Gemini hiểu nhiều hơn chỉ là từ ngữ! Bạn có thể đính kèm các tệp PDF, tài liệu, hình ảnh, mã và nhiều thứ khác vào lời nhắc của mình (lưu ý: khả năng tải lên tệp có thể phụ thuộc vào giao diện Gemini bạn đang sử dụng).</p>
+            <p>Ví dụ, Wendy có thể muốn cá nhân hóa email của mình cho một khách hàng tiềm năng cụ thể. Cô ấy sẽ mô tả hoặc dán nội dung từ một tờ rơi của doanh nghiệp mà cô muốn hợp tác ("Amaze Event Group Flyer") vào lời nhắc của mình:</p>
+            <div class="code-block my-5">
+                <p>"Phân tích thông tin từ tờ rơi sau của Amaze Event Group: [Mô tả/Nội dung tờ rơi]. Sau đó, cá nhân hóa email giới thiệu của tôi cho doanh nghiệp cụ thể này."</p>
+            </div>
+            <p>Chỉ cần vậy, Gemini sẽ giúp Wendy cá nhân hóa email dựa trên thông tin từ tờ rơi!</p>
+             <div class="activity-card">
+                <p><span class="icon-style">📚</span>Hoạt động: Xây dựng thư viện prompt cá nhân hóa</p>
+                <a href="https://bit.ly/4kj2J4F" target="_blank" class="cta-link text-sm">Bắt đầu xây dựng</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🎙️</span>Gemini Live: Đối Tác Tư Duy Thời Gian Thực</h2>
+            <p>Tất cả chúng ta đều gặp những lúc bế tắc trong công việc, khi một buổi động não nhanh hoặc một ý kiến thứ hai có thể tạo nên sự khác biệt. Đôi khi, việc có một người để cùng trao đổi ý tưởng hoặc nhận thêm thông tin đầu vào là vô giá. Tuy nhiên, một đối tác tư duy hoàn hảo không phải lúc nào cũng sẵn sàng. Đây chính là lúc AI có thể giúp đỡ.</p>
+            <p>Bạn có thể sử dụng Gemini như một đối tác tư duy sáng tạo, sẵn sàng hỗ trợ mọi loại nhiệm vụ. Thay vì chỉ trao đổi một chiều với AI, bạn đang tham gia vào một cuộc đối thoại, điều này sẽ giúp bạn suy nghĩ theo những cách mới và nâng cao khả năng sáng tạo của mình.</p>
+            <p>Vậy cách tốt nhất để hợp tác với Gemini để suy nghĩ mọi việc là gì? Câu trả lời là <strong>Gemini Live</strong>. Gemini Live là một trải nghiệm đàm thoại mà bạn có thể nói chuyện với Gemini để nhận phản hồi theo thời gian thực, không cần gõ phím.</p>
+            <p>Để bắt đầu, chỉ cần tải ứng dụng Gemini trên điện thoại và nhấn vào nút "Live". Bạn vẫn đang sử dụng Gemini như một đối tác tư duy sáng tạo, nhưng bạn đang thực hiện điều đó trực tiếp.</p>
+            <div class="text-center my-8 p-4 bg-gray-100 rounded-lg">
+                <img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihZJz6v7gX0L4qZ_Q5kR0jZ8qP9sY_n1eXwUp7fA_vBwN4k7qL-a_xX-M7_t_y1G0s_Xn0rB_zY4sC_k_Xl_A=s1600" alt="Gemini Live on phone" class="mx-auto h-72 object-contain rounded-md shadow-lg" onerror="this.src='https://placehold.co/200x400/E0F2FE/0C4A6E?text=Gemini+Live+App'; this.onerror=null;">
+                 <p class="text-sm text-gray-600 mt-3 italic">Minh họa ứng dụng Gemini Live trên điện thoại.</p>
+            </div>
+            <p>Wendy đã chứng minh cách Gemini Live có thể giúp cô ấy luyện tập một cuộc gọi bán hàng và nhận được những lời khuyên tuyệt vời để cải thiện. Gemini Live cũng là một công cụ tuyệt vời để động não ý tưởng hoặc nhận lời khuyên nhanh chóng. Bạn thậm chí có thể chia sẻ màn hình điện thoại của mình để Gemini phân tích nội dung, xác định các lĩnh vực cần cải thiện và đưa ra các đề xuất được cá nhân hóa ngay lập tức. Điều này có những lợi thế thực sự so với việc tự luyện tập trước gương!</p>
+            <div class="activity-card">
+                <p><span class="icon-style">🗣️</span>Hoạt động: Trò chuyện trực tiếp với Gemini Live</p>
+                <a href="https://bit.ly/45hifcL" target="_blank" class="cta-link text-sm">Trải nghiệm ngay</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2><span class="icon-style">🌟</span>Tận Dụng Tối Đa AI Trong Công Việc</h2>
+            <p>AI có thể giúp bạn giải quyết các vấn đề, làm việc hiệu quả hơn, và nhanh chóng tạo/chuyển đổi nội dung. Có rất nhiều cách mà AI có thể giúp bạn trong công việc hàng ngày. Đừng quên xem các video khác trong chuỗi bài giảng này để thấy những người thực đang giải quyết các vấnode thực tế trong công việc như thế nào, và cách bạn cũng có thể làm được điều đó!</p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-10 text-center">
+        <div class="container mx-auto px-4">
+            <p class="mb-3 text-lg">Nội dung được chia sẻ từ cộng đồng <strong>AI4Life</strong></p>
+            <p class="mb-4 text-sm">Nơi chia sẻ, khám phá và tận dụng sức mạnh của trí tuệ nhân tạo (AI) trong công việc và cuộc sống.</p>
+            <a href="https://group.beincom.com/communities/c49c6c3a-a2dc-46b6-9be1-3f9c10b5ea6c?_cord_id=2813687e-b026-4f5f-ad6f-79727f01ee53" target="_blank" class="cta-link bg-indigo-600 hover:bg-indigo-700 text-sm">
+                Tham gia cộng đồng AI4Life
+            </a>
+            <p class="mt-8 text-xs text-gray-500">© 2024 Chuyển thể bởi AI. Dựa trên nội dung từ Google.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
